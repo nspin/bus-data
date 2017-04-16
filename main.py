@@ -2,8 +2,7 @@ import sys
 import json
 from argparse import ArgumentParser
 
-import kml
-import tsv
+import fmt
 from extract import all_routes
 
 def main():
@@ -22,13 +21,7 @@ def main():
             tab_names = list(map(lambda x: x.strip(), f))
 
     routes = all_routes(args.data_dir, tab_names)
-
-    if args.format == 'json':
-        json.dump(routes, sys.stdout)
-    elif args.format == 'kml':
-        kml.dump(routes, sys.stdout)
-    elif args.format == 'tsv':
-        tsv.dump(routes, sys.stdout)
+    fmt.dump(args.format, routes, sys.stdout)
 
 
 if __name__ == '__main__':
