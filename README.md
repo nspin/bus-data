@@ -58,14 +58,12 @@ optional arguments:
 
 For example, the following will output JSON with very similar structure to the original Google sheet:
 ```
-$ python3 main.py data-* -f tabs.txt json
+$ python3 main.py data-* json -f tabs.txt
 ```
-And this will output KML, which can be uploaded to Google maps:
+KML and TSV files can be uploaded to Google Maps, but this particular data set has too many features,
+and so Maps will not accept all of them.
+A work around is to create KML or TSV files for subsets of the tabs.
+For example, the following creates a KML file just for the bus stop on Saturn:
 ```
-$ python3 main.py data-* -f tabs.txt kml
-```
-Unfortunately, that KML file will probably be too big, and Google maps will only take a portion of the features from it.
-You could create KML from a few tabs at a time and upload them separately, or you could instead use TSV:
-```
-$ python3 main.py data-* -f tabs.txt tsv
+$ python3 main.py data-* kml -l Saturn
 ```
